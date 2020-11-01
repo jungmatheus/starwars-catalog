@@ -101,6 +101,10 @@ li {
     background-color:#444444;
     color:white;
 }
+
+.li-clicked {
+    padding-left:17px;
+}
 section h2 {
     text-align:center;
     font-style:'Ropa Sans', sans-serif;
