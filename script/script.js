@@ -25,3 +25,12 @@ for(let i = 0; i < li.length; i++) {
 
 
 
+async function request() {
+    let response = await fetch("https://swapi.dev/api/people/1/")
+    let data = await response.json()
+    console.log(data.name)
+    console.log(data.height)
+	//document.getElementByClassName("name")[0].innerHTML = name
+}
+
+request()
