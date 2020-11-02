@@ -5,20 +5,14 @@ let planetP = document.querySelectorAll(".planet-p");
 let planetName = document.querySelector(".planet-name");
 
 async function getRequest() {
-
-
     const request = await fetch("https://swapi.dev/api/people/");
     const data = await request.json();
 
-    console.log(data);
-
     for(let i = 0; i < li.length; i++) {
-
         li[i].innerHTML = data.results[i].name;
     }
-    
-    for(let i = 0; i < li.length; i++) {
 
+    for(let i = 0; i < li.length; i++) {
         li[i].addEventListener("click", function() {
 
                 charName.innerHTML = data.results[i].name;
@@ -34,8 +28,7 @@ async function getRequest() {
                 let fetchPlanet = async function() {
                     const requestPlanet = await fetch(data.results[i].homeworld);
                     const planetData = await requestPlanet.json();
-                    
-                    console.log(planetData)
+
                     planetName.innerHTML = planetData.name;
                     planetP[0].innerHTML = "Rotation period: " + planetData.rotation_period + " days";
                     planetP[1].innerHTML = "Orbital period: " +  planetData.orbital_period + " days";
@@ -43,7 +36,6 @@ async function getRequest() {
                     planetP[3].innerHTML = "Climate: " +  planetData.climate;
                     planetP[4].innerHTML = "Gravity: " + planetData.gravity;
                     planetP[5].innerHTML = "Terrain: " +  planetData.terrain;
-
                 }
 
                 fetchPlanet();
