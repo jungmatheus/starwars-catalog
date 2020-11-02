@@ -23,7 +23,7 @@ async function getRequest() {
 
                 charName.innerHTML = data.results[i].name;
                 charP[0].innerHTML = "Height: " + data.results[i].height + "cm";
-                charP[1].innerHTML = "Mass " +  data.results[i].mass + "kg";
+                charP[1].innerHTML = "Mass: " +  data.results[i].mass + "kg";
                 charP[2].innerHTML = "Hair color: " + data.results[i].hair_color;
                 charP[3].innerHTML = "Skin color: " + data.results[i].skin_color;
                 charP[4].innerHTML = "Eye color: " +  data.results[i].eye_color;
