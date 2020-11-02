@@ -39,22 +39,11 @@ async function getRequest() {
                 }
 
                 fetchPlanet();
-                
-          
-    
-    
+
             li[i].classList.add("li-clicked");
             li[i].innerHTML = li[i].innerHTML + "▸";
-    
         })
-        
     }
-
-
-
-
 }
 
 getRequest();
-
-
