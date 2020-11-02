@@ -1,43 +1,68 @@
 let li = document.querySelectorAll("li");
+let charP  = document.querySelectorAll(".char-p");
+let charName = document.querySelector(".char-name");
+let planetP = document.querySelectorAll(".planet-p");
+let planetName = document.querySelector(".planet-name");
+
+async function getRequest() {
 
 
+    const request = await fetch("https://swapi.dev/api/people/");
+    const data = await request.json();
 
-for(let i = 0; i < li.length; i++) {
+    console.log(data);
+
+    for(let i = 0; i < li.length; i++) {
+
+        li[i].innerHTML = data.results[i].name;
+    }
     
-    li[i].addEventListener("click", function() {
+    for(let i = 0; i < li.length; i++) {
 
-        li[i].classList.add("li-clicked");
-        li[i].innerHTML = li[i].innerHTML + "▸";
+        li[i].addEventListener("click", function() {
 
-    })
+                charName.innerHTML = data.results[i].name;
+                charP[0].innerHTML = "Height: " + data.results[i].height + "cm";
+                charP[1].innerHTML = "Mass " +  data.results[i].mass + "kg";
+                charP[2].innerHTML = "Hair color: " + data.results[i].hair_color;
+                charP[3].innerHTML = "Skin color: " + data.results[i].skin_color;
+                charP[4].innerHTML = "Eye color: " +  data.results[i].eye_color;
+                charP[5].innerHTML = "Birth year: " + data.results[i].birth_year;
+                charP[6].innerHTML = "Gender: " + data.results[i].gender;
+       
+
+                let fetchPlanet = async function() {
+                    const requestPlanet = await fetch(data.results[i].homeworld);
+                    const planetData = await requestPlanet.json();
+                    
+                    console.log(planetData)
+                    planetName.innerHTML = planetData.name;
+                    planetP[0].innerHTML = "Rotation period: " + planetData.rotation_period + " days";
+                    planetP[1].innerHTML = "Orbital period: " +  planetData.orbital_period + " days";
+                    planetP[2].innerHTML = "Diameter: " +  planetData.diameter + "km";
+                    planetP[3].innerHTML = "Climate: " +  planetData.climate;
+                    planetP[4].innerHTML = "Gravity: " + planetData.gravity;
+                    planetP[5].innerHTML = "Terrain: " +  planetData.terrain;
+
+                }
+
+                fetchPlanet();
+                
+          
     
+    
+            li[i].classList.add("li-clicked");
+            li[i].innerHTML = li[i].innerHTML + "▸";
+    
+        })
+        
+    }
+
+
+
+
 }
 
+getRequest();
 
 
-
-async function request() {
-    let response = await fetch("https://swapi.dev/api/people/1/")
-    let data = await response.json()
-    document.getElementsByClassName("detail1")[0].innerText = data.name
-    document.getElementsByClassName("detail2")[0].innerText = "Height: " + data.height + "cm"
-    document.getElementsByClassName("detail3")[0].innerText = "Mass: " + data.mass + "kg"
-    document.getElementsByClassName("detail4")[0].innerText = "Hair color: " + data.hair_color
-    document.getElementsByClassName("detail5")[0].innerText = "Skin color: " + data.skin_color
-    document.getElementsByClassName("detail6")[0].innerText = "Eye color: " + data.eye_color
-    document.getElementsByClassName("detail7")[0].innerText = "Birth Year: " + data.birth_year
-    document.getElementsByClassName("detail8")[0].innerText = "Gender: " + data.gender
-
-    response = await fetch(data.homeworld)
-    data = await response.json()
-    document.getElementsByClassName("detail9")[0].innerText = data.name
-    document.getElementsByClassName("detail10")[0].innerText = "Rotation period: " + data.rotation_period + "h"
-    document.getElementsByClassName("detail11")[0].innerText = "Orbital period: " + data.orbital_period + " days"
-    document.getElementsByClassName("detail12")[0].innerText = "Diameter: " + data.diameter + "km"
-    document.getElementsByClassName("detail13")[0].innerText = "Climate: " + data.climate
-    document.getElementsByClassName("detail14")[0].innerText = "Gravity: " + data.gravity
-    document.getElementsByClassName("detail15")[0].innerText = "Terrain: " + data.terrain
-    document.getElementsByClassName("detail16")[0].innerText = "Population: " + data.population
-}
-
-request()

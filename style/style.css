@@ -61,8 +61,11 @@ main section {
 
 .details {
     width:484px;
-    height:624px;
+    height:618px;
     background-color:#C4C4C4;
+    display:flex;
+    flex-direction:column;
+
 }
 
 header img {
@@ -111,7 +114,7 @@ section h2 {
     font-size:30px;
     color: #FFD600;
     background-color:#535556;
-    height:77px;
+    height:67px;
     padding-top:20px;
 }
 
@@ -121,4 +124,39 @@ section h2 {
     font-size:30px;
     color:black;
     margin-top:20px;
+}
+
+.char-information {
+ width:484px;
+ height:264px;
+ background-color:#C4C4C4;
+}
+
+.planet-information {
+    width:484px;
+    height:287px;
+    background-color:#8E8E8E;
+}
+
+ .char-p, .planet-p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    margin-top:3px;
+    margin-left:15px;
+}
+
+.char-name {
+    font-size:30px;
+    margin-left:15px;
+    margin-top:5px;
+}
+
+.planet-information p:not(:first-child) {
+    color:white;
+}
+
+.planet-name {
+    font-size:34px;
+    color:white;
+    margin-left:15px;
 }
