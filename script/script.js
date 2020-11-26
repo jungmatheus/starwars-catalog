@@ -12,9 +12,7 @@ let pages = document.querySelector("pages");
 
 
 
-
-
-    let page = "https://swapi.dev/api/people/";
+let page = "https://swapi.dev/api/people/";
 
 let run = function() {
 
@@ -25,7 +23,7 @@ let run = function() {
 
         data.then(function (result) {
 
-
+            console.log(result.next)
             let liCheck = 0;
             page = result.next;
             
@@ -109,6 +107,7 @@ let run = function() {
 
     request.catch(function() {
         console.log("loading");
+        
     })
 
 
